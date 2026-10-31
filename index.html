@@ -1,0 +1,1464 @@
+<title>FitCoach Panel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+
+<script type="application/json" id="seed-data">{
+  "exercises": [
+    {
+      "id": "pecho_press_banca_barra",
+      "name_es": "Press de banca con barra",
+      "primary_muscle": "Pecho",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_press_banca_mancuernas",
+      "name_es": "Press de banca con mancuernas",
+      "primary_muscle": "Pecho",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_press_inclinado_barra",
+      "name_es": "Press inclinado con barra",
+      "primary_muscle": "Pecho",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_press_declinado_barra",
+      "name_es": "Press declinado con barra",
+      "primary_muscle": "Pecho",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_aperturas_mancuernas",
+      "name_es": "Aperturas con mancuernas",
+      "primary_muscle": "Pecho",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_fondos_paralelas",
+      "name_es": "Fondos en paralelas",
+      "primary_muscle": "Pecho",
+      "equipment": "Peso corporal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pecho_cruce_polea",
+      "name_es": "Cruce de poleas",
+      "primary_muscle": "Pecho",
+      "equipment": "Polea",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_dominadas",
+      "name_es": "Dominadas",
+      "primary_muscle": "Espalda",
+      "equipment": "Peso corporal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_remo_barra",
+      "name_es": "Remo con barra",
+      "primary_muscle": "Espalda",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_remo_mancuerna_un_brazo",
+      "name_es": "Remo con mancuerna a un brazo",
+      "primary_muscle": "Espalda",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_jalon_polea_pecho",
+      "name_es": "Jalón al pecho en polea",
+      "primary_muscle": "Espalda",
+      "equipment": "Polea",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_remo_polea_baja",
+      "name_es": "Remo en polea baja",
+      "primary_muscle": "Espalda",
+      "equipment": "Polea",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_peso_muerto",
+      "name_es": "Peso muerto",
+      "primary_muscle": "Espalda",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "espalda_hiperextensiones",
+      "name_es": "Hiperextensiones lumbares",
+      "primary_muscle": "Espalda",
+      "equipment": "Peso corporal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_sentadilla_barra",
+      "name_es": "Sentadilla con barra",
+      "primary_muscle": "Pierna",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_prensa",
+      "name_es": "Prensa de piernas",
+      "primary_muscle": "Pierna",
+      "equipment": "Máquina",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_extension_cuadriceps",
+      "name_es": "Extensión de cuádriceps",
+      "primary_muscle": "Pierna",
+      "equipment": "Máquina",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_curl_femoral",
+      "name_es": "Curl femoral acostado",
+      "primary_muscle": "Pierna",
+      "equipment": "Máquina",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_zancadas_mancuernas",
+      "name_es": "Zancadas con mancuernas",
+      "primary_muscle": "Pierna",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_sentadilla_bulgara",
+      "name_es": "Sentadilla búlgara",
+      "primary_muscle": "Pierna",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_elevacion_pantorrillas_pie",
+      "name_es": "Elevación de pantorrillas de pie",
+      "primary_muscle": "Pierna",
+      "equipment": "Máquina",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_hip_thrust_barra",
+      "name_es": "Hip thrust con barra",
+      "primary_muscle": "Pierna",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "pierna_peso_muerto_rumano",
+      "name_es": "Peso muerto rumano",
+      "primary_muscle": "Pierna",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_press_militar_barra",
+      "name_es": "Press militar con barra",
+      "primary_muscle": "Hombro",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_press_mancuernas",
+      "name_es": "Press de hombro con mancuernas",
+      "primary_muscle": "Hombro",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_elevaciones_laterales",
+      "name_es": "Elevaciones laterales",
+      "primary_muscle": "Hombro",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_elevaciones_frontales",
+      "name_es": "Elevaciones frontales",
+      "primary_muscle": "Hombro",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_pajaros_deltoide_posterior",
+      "name_es": "Pájaros (deltoide posterior)",
+      "primary_muscle": "Hombro",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "hombro_remo_al_menton",
+      "name_es": "Remo al mentón",
+      "primary_muscle": "Hombro",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "biceps_curl_barra",
+      "name_es": "Curl de bíceps con barra",
+      "primary_muscle": "Bíceps",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "biceps_curl_mancuernas",
+      "name_es": "Curl de bíceps con mancuernas",
+      "primary_muscle": "Bíceps",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "biceps_curl_martillo",
+      "name_es": "Curl martillo",
+      "primary_muscle": "Bíceps",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "biceps_curl_predicador",
+      "name_es": "Curl en banco Scott",
+      "primary_muscle": "Bíceps",
+      "equipment": "Banco Scott",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "triceps_press_frances",
+      "name_es": "Press francés",
+      "primary_muscle": "Tríceps",
+      "equipment": "Barra",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "triceps_extension_polea",
+      "name_es": "Extensión de tríceps en polea",
+      "primary_muscle": "Tríceps",
+      "equipment": "Polea",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "triceps_fondos_banco",
+      "name_es": "Fondos en banco",
+      "primary_muscle": "Tríceps",
+      "equipment": "Peso corporal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "triceps_patada_triceps",
+      "name_es": "Patada de tríceps",
+      "primary_muscle": "Tríceps",
+      "equipment": "Mancuernas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "core_plancha_abdominal",
+      "name_es": "Plancha abdominal",
+      "primary_muscle": "Core",
+      "equipment": "Peso corporal",
+      "tracking_metric": "time"
+    },
+    {
+      "id": "core_plancha_lateral",
+      "name_es": "Plancha lateral",
+      "primary_muscle": "Core",
+      "equipment": "Peso corporal",
+      "tracking_metric": "time"
+    },
+    {
+      "id": "core_crunch_abdominal",
+      "name_es": "Crunch abdominal",
+      "primary_muscle": "Core",
+      "equipment": "Peso corporal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "core_elevacion_piernas_colgado",
+      "name_es": "Elevación de piernas colgado",
+      "primary_muscle": "Core",
+      "equipment": "Barra de dominadas",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "core_rueda_abdominal",
+      "name_es": "Rueda abdominal",
+      "primary_muscle": "Core",
+      "equipment": "Rueda abdominal",
+      "tracking_metric": "reps_and_weight"
+    },
+    {
+      "id": "cardio_cinta_correr",
+      "name_es": "Cinta de correr",
+      "primary_muscle": "Cardio",
+      "equipment": "Cinta",
+      "tracking_metric": "time"
+    },
+    {
+      "id": "cardio_bicicleta_fija",
+      "name_es": "Bicicleta fija",
+      "primary_muscle": "Cardio",
+      "equipment": "Bicicleta fija",
+      "tracking_metric": "time"
+    }
+  ]
+}</script>
+
+<style>
+/*
+  Layout concept: a single fixed app shell (top brand bar + profile switcher)
+  over a scrolling content area whose view is entirely driven by which
+  profile is active — trainer dashboard with per-client detail tabs, or a
+  client's own Rutina / Dieta / Progreso tabs. Each exercise row carries a
+  4-week weight log, so the same day's table doubles as the training diary.
+*/
+:root{
+  --bg:#f5f2ec; --surface:#ffffff; --surface-alt:#ece6da; --fg:#1d1a15;
+  --muted:#73695a; --border:#e1d9c9; --accent:#d9480f; --accent-fg:#fff7f0;
+  --good:#2f7d4f; --warn:#a8710a; --chart-grid:#e1d9c9; --shadow:0 1px 2px rgba(29,26,21,.06),0 8px 24px -16px rgba(29,26,21,.25);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#15130f; --surface:#1e1b15; --surface-alt:#28241c; --fg:#f3ede1;
+    --muted:#aa9f8a; --border:#352f23; --accent:#ff7640; --accent-fg:#1a0d05;
+    --good:#5ec389; --warn:#e3b24a; --chart-grid:#352f23; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15130f; --surface:#1e1b15; --surface-alt:#28241c; --fg:#f3ede1;
+  --muted:#aa9f8a; --border:#352f23; --accent:#ff7640; --accent-fg:#1a0d05;
+  --good:#5ec389; --warn:#e3b24a; --chart-grid:#352f23; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -16px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+/* cheerful palette options — swap by setting data-palette on the root element */
+:root[data-palette="citrus"]{
+  --bg:#fff8e7; --surface:#ffffff; --surface-alt:#ffefc7; --fg:#2b2210;
+  --muted:#8a7a52; --border:#f0dfae; --accent:#ff7a1a; --accent-fg:#2b1200; --chart-grid:#f0dfae;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-palette="citrus"]:not([data-theme="light"]){
+    --bg:#1f1708; --surface:#2a2010; --surface-alt:#342611; --fg:#fff4d6;
+    --muted:#c9b98a; --border:#4a3a18; --accent:#ff8c3d; --accent-fg:#1f1200; --chart-grid:#4a3a18; color-scheme:dark;
+  }
+}
+:root[data-palette="citrus"][data-theme="dark"]{
+  --bg:#1f1708; --surface:#2a2010; --surface-alt:#342611; --fg:#fff4d6;
+  --muted:#c9b98a; --border:#4a3a18; --accent:#ff8c3d; --accent-fg:#1f1200; --chart-grid:#4a3a18; color-scheme:dark;
+}
+
+:root[data-palette="tropical"]{
+  --bg:#fff0f6; --surface:#ffffff; --surface-alt:#ffd9ea; --fg:#3a1030;
+  --muted:#8a5a73; --border:#f7c7dd; --accent:#ff4d8d; --accent-fg:#3a0018; --chart-grid:#f7c7dd;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-palette="tropical"]:not([data-theme="light"]){
+    --bg:#210714; --surface:#2c0c1c; --surface-alt:#3a1226; --fg:#ffe3ef;
+    --muted:#cf9bb3; --border:#502038; --accent:#ff6fa0; --accent-fg:#260012; --chart-grid:#502038; color-scheme:dark;
+  }
+}
+:root[data-palette="tropical"][data-theme="dark"]{
+  --bg:#210714; --surface:#2c0c1c; --surface-alt:#3a1226; --fg:#ffe3ef;
+  --muted:#cf9bb3; --border:#502038; --accent:#ff6fa0; --accent-fg:#260012; --chart-grid:#502038; color-scheme:dark;
+}
+
+:root[data-palette="candy"]{
+  --bg:#f5f0ff; --surface:#ffffff; --surface-alt:#e7dbff; --fg:#241642;
+  --muted:#786a9c; --border:#dcccfa; --accent:#8b5cf6; --accent-fg:#1a0f33; --chart-grid:#dcccfa;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-palette="candy"]:not([data-theme="light"]){
+    --bg:#140a24; --surface:#1d1033; --surface-alt:#271444; --fg:#ede5ff;
+    --muted:#b2a0d6; --border:#3b245c; --accent:#a78bfa; --accent-fg:#170b2e; --chart-grid:#3b245c; color-scheme:dark;
+  }
+}
+:root[data-palette="candy"][data-theme="dark"]{
+  --bg:#140a24; --surface:#1d1033; --surface-alt:#271444; --fg:#ede5ff;
+  --muted:#b2a0d6; --border:#3b245c; --accent:#a78bfa; --accent-fg:#170b2e; --chart-grid:#3b245c; color-scheme:dark;
+}
+
+/* Fiore — light, navy + white corporate look with an amber mark, inspired by the reference screenshot */
+:root[data-palette="fiore"]{
+  --bg:#f2f4f9; --surface:#ffffff; --surface-alt:#eceff6; --fg:#1c2333;
+  --muted:#636d82; --border:#dfe3ee; --accent:#1c2e52; --accent-fg:#ffffff; --chart-grid:#dfe3ee;
+  --good:#1f7a43; --warn:#c0392b; --accent2:#e08221;
+  --topbar-bg:#16244a; --topbar-fg:#ffffff;
+  --topbar-chip-bg:rgba(255,255,255,.14); --topbar-chip-border:rgba(255,255,255,.26); --topbar-chip-fg:#dce3f6; --topbar-ring:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:'Inter',system-ui,sans-serif; font-size:15px; line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+h1,h2,h3,.display{font-family:'Barlow Condensed',system-ui,sans-serif;font-weight:700;letter-spacing:.01em;text-wrap:balance}
+.num{font-family:'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.app{max-width:1080px;margin:0 auto}
+a{color:var(--accent)}
+
+/* top bar */
+.topbar{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:10;
+  background:var(--topbar-bg,var(--surface)); border-bottom:1px solid var(--topbar-border,var(--border));
+  padding:14px 0; margin:0 -16px 24px;
+}
+.topbar-inner{max-width:1080px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:9px}
+.brand-mark{width:30px;height:30px;border-radius:8px;background:var(--accent2,var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-mark svg{width:17px;height:17px}
+.brand-name{font-family:'Barlow Condensed';font-weight:700;font-size:21px;letter-spacing:.01em;color:var(--topbar-fg,var(--fg))}
+.switcher{display:flex;gap:4px;background:var(--topbar-chip-bg,var(--surface-alt));border:1px solid var(--topbar-chip-border,var(--border));border-radius:999px;padding:3px;flex-wrap:wrap}
+.switcher button{
+  border:none;background:transparent;color:var(--topbar-chip-fg,var(--muted));font:600 13px 'Inter',sans-serif;
+  padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap;
+}
+.switcher button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+.switcher button:not([aria-pressed="true"]):hover{background:var(--topbar-chip-border,var(--border))}
+.palette-switcher{display:flex;gap:6px;align-items:center}
+.palette-dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;flex-shrink:0}
+.palette-dot[aria-pressed="true"]{border-color:var(--topbar-ring,var(--fg))}
+
+/* generic blocks */
+.eyebrow{text-transform:uppercase;font:600 11px 'Inter';letter-spacing:.08em;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+.pad{padding:20px}
+.grid-clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
+.client-card{cursor:pointer;transition:border-color .15s,transform .15s}
+.client-card:hover{border-color:var(--accent)}
+.client-card[data-active="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.client-card h3{font-size:22px;margin:0 0 2px}
+.client-card .goal{color:var(--muted);font-size:13px;margin-bottom:12px}
+.stat-row{display:flex;gap:18px;flex-wrap:wrap}
+.stat{min-width:70px}
+.stat .v{font-size:19px;font-weight:600}
+.stat .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.delta{font-size:12px;font-weight:600;margin-left:4px}
+.delta.good{color:var(--good)} .delta.warn{color:var(--warn)}
+
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin:28px 0 20px;overflow-x:auto}
+.tabs button{
+  border:none;background:transparent;color:var(--muted);font:600 14px 'Inter';
+  padding:10px 4px;margin-right:22px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;
+}
+.tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--accent)}
+
+.day-card{margin-bottom:14px}
+.day-card .head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border)}
+.day-card .head h3{margin:0;font-size:20px}
+.day-badge{background:var(--surface-alt);color:var(--muted);font:600 11px 'JetBrains Mono';padding:3px 9px;border-radius:999px;letter-spacing:.04em}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+.ex-table{min-width:720px}
+.ex-table td,.ex-table th{padding:10px 14px;text-align:left;font-size:13.5px;white-space:nowrap}
+.ex-table td:first-child,.ex-table th:first-child{padding-left:20px;white-space:normal}
+.ex-table td:last-child,.ex-table th:last-child{padding-right:20px}
+.ex-table th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding-top:12px;padding-bottom:8px}
+.ex-table tr:not(:last-child) td{border-bottom:1px solid var(--border)}
+.ex-table thead th.wk-head{color:var(--accent)}
+.ex-table input[type="text"],.ex-table input[type="number"]{
+  width:58px;background:var(--surface-alt);border:1px solid var(--border);border-radius:7px;
+  padding:5px 7px;color:var(--fg);font:500 13px 'JetBrains Mono';
+}
+.ex-table input.wk-input{width:64px;text-align:center}
+.ex-table input.wk-input:not(:placeholder-shown){border-color:var(--accent)}
+.ex-table .plain{color:var(--fg)}
+.muscle-pill{display:inline-block;font:600 11px 'Inter';padding:2px 8px;border-radius:999px;background:var(--surface-alt);color:var(--muted);margin-left:8px;white-space:nowrap}
+.muscle-pill.drop-pill{background:var(--accent);color:var(--accent-fg)}
+.week-selector{display:flex;gap:4px;background:var(--surface-alt);border:1px solid var(--border);border-radius:999px;padding:3px;flex-wrap:wrap;align-self:flex-start}
+.week-selector button{border:none;background:transparent;color:var(--muted);font:600 12.5px 'Inter';padding:6px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.week-selector button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+.set-fields{display:flex;gap:6px;flex-wrap:nowrap}
+.set-field{display:flex;flex-direction:column;align-items:center;gap:3px}
+.set-field label{font:600 9.5px 'Inter';color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.set-field.drop label{color:var(--accent)}
+.set-field input{width:52px;text-align:center;padding:5px 4px}
+.set-field.drop input{border-color:var(--accent)}
+.icon-btn{border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:4px 6px;border-radius:6px}
+.icon-btn:hover{background:var(--surface-alt);color:var(--warn)}
+.add-ex-row{display:flex;gap:8px;padding:14px 20px;flex-wrap:wrap;align-items:center}
+.add-ex-row select{flex:1;min-width:180px;background:var(--surface-alt);border:1px solid var(--border);color:var(--fg);padding:8px 10px;border-radius:8px;font:500 13px Inter}
+.btn{
+  border:none;border-radius:9px;padding:9px 16px;font:600 13px 'Inter';cursor:pointer;
+  background:var(--accent);color:var(--accent-fg);white-space:nowrap;
+}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}
+.btn.ghost:hover{background:var(--surface-alt)}
+.btn.sm{padding:6px 12px;font-size:12px}
+
+.callout{background:var(--surface-alt);border:1px solid var(--border);border-radius:12px;padding:14px 18px;font-size:13.5px;color:var(--muted);margin-top:4px}
+.callout b{color:var(--fg)}
+
+.meal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+.meal-card h3{margin:0;font-size:19px}
+.meal-card ul{margin:10px 0 14px;padding-left:18px;font-size:13.5px}
+.meal-card li{margin-bottom:4px}
+.macro-row{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:12px}
+.macro-row .stat .v{font-size:16px}
+.macro-edit{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:12px;margin-top:4px}
+.macro-edit label{display:flex;flex-direction:column;gap:3px;font:600 10px Inter;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.macro-edit input{width:58px}
+.items-edit{width:100%;min-height:76px;background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;color:var(--fg);font:400 13px Inter;padding:8px 10px;resize:vertical}
+
+.totals-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;margin:14px 0 8px;background:var(--surface-alt)}
+.totals-bar span{height:100%}
+.totals-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.totals-legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+
+.history-table{width:100%;border-collapse:collapse;margin-top:14px}
+.history-table th{text-align:left;font:600 11px Inter;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding:8px 14px;border-bottom:1px solid var(--border)}
+.history-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13.5px}
+.history-table tr:last-child td{border-bottom:none}
+
+.chart-wrap{margin-top:12px;overflow-x:auto}
+.chart-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart-area{fill:var(--accent);opacity:.08}
+.chart-grid-line{stroke:var(--chart-grid);stroke-width:1}
+.chart-dot{fill:var(--surface);stroke:var(--accent);stroke-width:2.5}
+.chart-label{fill:var(--muted);font:500 11px 'JetBrains Mono',monospace}
+.chart-value{fill:var(--fg);font:600 11px 'JetBrains Mono',monospace}
+
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:16px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font:600 11px Inter;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.field input{background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;padding:9px 10px;color:var(--fg);font:500 14px 'JetBrains Mono'}
+.field input[type="month"]{font-family:'Inter'}
+.field input[type="file"]{font:400 12px Inter;padding:7px 6px}
+.form-actions{margin-top:18px;display:flex;gap:10px;align-items:center}
+.hint{font-size:12px;color:var(--muted)}
+
+.toast{
+  position:fixed; left:50%; bottom:max(22px,env(safe-area-inset-bottom,0px)); transform:translateX(-50%) translateY(12px);
+  background:var(--fg); color:var(--bg); padding:10px 18px; border-radius:999px; font:600 13px Inter;
+  opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:30; box-shadow:var(--shadow);
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.section-head h2{margin:0;font-size:26px}
+.subtitle{color:var(--muted);font-size:14px;margin-top:2px}
+
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:28px 26px;width:100%;max-width:380px}
+.auth-tabs{display:flex;gap:4px;background:var(--surface-alt);border:1px solid var(--border);border-radius:999px;padding:3px;margin-bottom:18px}
+.auth-tabs button{flex:1;border:none;background:transparent;color:var(--muted);font:600 13px 'Inter';padding:8px 10px;border-radius:999px;cursor:pointer}
+.auth-tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+#auth-form{display:flex;flex-direction:column;gap:12px}
+#auth-form .field input,#auth-form .field select{background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;padding:9px 10px;color:var(--fg);font:500 14px 'Inter'}
+#auth-form .btn{width:100%}
+.field select,.field textarea{background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;padding:9px 10px;color:var(--fg);font:500 14px 'Inter'}
+#new-day-label,#new-meal-name{background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--fg);font:500 13px 'Inter'}
+#cardio-notes{width:100%;box-sizing:border-box;background:var(--surface-alt);border:1px solid var(--border);border-radius:8px;padding:9px 10px;color:var(--fg);font:400 13px 'Inter';resize:vertical}
+</style>
+
+<div class="app" id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var SUPABASE_URL = "https://vqxcdwovyzdgeuaiqlkf.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_fumrSPpZPBGYeogfIcpLRQ_cX1qR9XY";
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var DATA = JSON.parse(document.getElementById('seed-data').textContent);
+  var exById = {};
+  DATA.exercises.forEach(function(e){ exById[e.id] = e; });
+  var WEEK_LABELS = ['Sem 1','Sem 2','Sem 3','Sem 4'];
+
+  var today = new Date();
+  var CURRENT_MONTH = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0');
+
+  // ---------- auth / app state ----------
+  var session = null;      // supabase auth session
+  var me = null;           // own profile row
+  var trainerOf = null;    // trainer profile, when `me` is a client
+  var clients = [];        // list of client profiles, when `me` is a trainer
+  var profileById = {};    // cache of profiles seen so far
+
+  var routines = [];       // in-memory mirror, mapped to the shape the renderers expect
+  var diets = [];
+  var progress = [];
+  var loading = true;
+  var authMode = 'login';  // 'login' | 'signup'
+  var authError = '';
+  var authBusy = false;
+
+  var state = {
+    trainerClientId: null,
+    trainerTab: 'rutina',
+    clientTab: 'rutina',
+    trainerWeek: 1,
+    clientWeek: 1,
+    palette: 'fiore'
+  };
+
+  function esc(s){
+    return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function toast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function(){ t.classList.remove('show'); }, 1800);
+  }
+  function uid(){ return 'id_' + Math.random().toString(36).slice(2) + Date.now().toString(36); }
+
+  function routineFor(clientId){
+    return routines.find(function(r){ return r.client_id===clientId; });
+  }
+  function dietFor(clientId){
+    return diets.find(function(d){ return d.client_id===clientId; });
+  }
+  function progressFor(clientId){
+    return progress.filter(function(p){ return p.client_id===clientId; })
+      .sort(function(a,b){ return a.month.localeCompare(b.month); });
+  }
+  function monthLabel(m){
+    var parts = m.split('-');
+    var names = ['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    return names[parseInt(parts[1],10)] + " '" + parts[0].slice(2);
+  }
+  function fmt1(n){ return (Math.round(n*10)/10).toFixed(1); }
+
+  function deltaSpan(curr, prev, lowerIsGood){
+    if (prev==null) return '';
+    var d = curr - prev;
+    if (Math.abs(d) < 0.05) return '<span class="delta">· sin cambio</span>';
+    var good = lowerIsGood ? d < 0 : d > 0;
+    var sign = d > 0 ? '+' : '';
+    return '<span class="delta '+(good?'good':'warn')+'">'+sign+fmt1(d)+'</span>';
+  }
+  // Normalizes ex.week_weights to 4 arrays (one per week), each sized to the
+  // exercise's working sets plus one extra slot for the drop set, if flagged.
+  function setCols(ex){ return ex.sets + (ex.has_dropset ? 1 : 0); }
+  function ensureWeekSets(ex){
+    var cols = setCols(ex);
+    if (!Array.isArray(ex.week_weights)) ex.week_weights = [];
+    for (var w=0; w<4; w++){
+      var row = Array.isArray(ex.week_weights[w]) ? ex.week_weights[w] : [];
+      if (row.length < cols){ row = row.concat(new Array(cols-row.length).fill('')); }
+      else if (row.length > cols){ row = row.slice(0, cols); }
+      ex.week_weights[w] = row;
+    }
+    ex.week_weights.length = 4;
+    return ex.week_weights;
+  }
+  function setColLabel(ex, colIdx){
+    return (ex.has_dropset && colIdx === ex.sets) ? 'Desc' : ('S'+(colIdx+1));
+  }
+
+  // ---------- chart ----------
+  function lineChart(points, opts){
+    opts = opts || {};
+    var w = 600, h = 200, padL = 38, padR = 14, padT = 18, padB = 28;
+    if (points.length < 2){
+      return '<div class="callout">Necesitás al menos dos registros para ver la tendencia.</div>';
+    }
+    var vals = points.map(function(p){ return p.value; });
+    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+    if (min === max){ min -= 1; max += 1; }
+    var pad = (max-min)*0.15;
+    min -= pad; max += pad;
+    var innerW = w - padL - padR, innerH = h - padT - padB;
+    function x(i){ return padL + (points.length===1 ? innerW/2 : innerW * i/(points.length-1)); }
+    function y(v){ return padT + innerH - (innerH * (v-min)/(max-min)); }
+    var gridLines = '';
+    var steps = 3;
+    for (var s=0; s<=steps; s++){
+      var gv = min + (max-min)*s/steps;
+      var gy = y(gv);
+      gridLines += '<line class="chart-grid-line" x1="'+padL+'" x2="'+(w-padR)+'" y1="'+gy+'" y2="'+gy+'"/>';
+      gridLines += '<text class="chart-label" x="'+(padL-8)+'" y="'+(gy+3)+'" text-anchor="end">'+Math.round(gv)+'</text>';
+    }
+    var linePts = points.map(function(p,i){ return x(i)+','+y(p.value); }).join(' ');
+    var areaPts = 'M'+x(0)+','+(padT+innerH)+' L'+points.map(function(p,i){ return x(i)+','+y(p.value); }).join(' L')+' L'+x(points.length-1)+','+(padT+innerH)+' Z';
+    var dots = points.map(function(p,i){
+      return '<circle class="chart-dot" cx="'+x(i)+'" cy="'+y(p.value)+'" r="4"/>' +
+        '<text class="chart-value" x="'+x(i)+'" y="'+(y(p.value)-11)+'" text-anchor="middle">'+fmt1(p.value)+(opts.unit||'')+'</text>' +
+        '<text class="chart-label" x="'+x(i)+'" y="'+(h-8)+'" text-anchor="middle">'+esc(p.label)+'</text>';
+    }).join('');
+    return '<div class="chart-wrap"><svg viewBox="0 0 '+w+' '+h+'" style="width:100%;height:auto;min-width:360px" role="img" aria-label="'+esc(opts.title||'Gráfico')+'">' +
+      gridLines + '<path d="'+areaPts+'" class="chart-area"/>' +
+      '<polyline class="chart-line" points="'+linePts+'"/>' + dots +
+      '</svg></div>';
+  }
+
+  // ---------- auth screen ----------
+  function renderAuth(){
+    var isSignup = authMode === 'signup';
+    var roleFields = isSignup ? (
+      '<div class="field"><label>Soy</label><select name="role" id="signup-role">' +
+        '<option value="client">Alumno/a</option>' +
+        '<option value="trainer">Entrenador/a</option>' +
+      '</select></div>' +
+      '<div class="field"><label>Nombre completo</label><input type="text" name="full_name" required></div>'
+    ) : '';
+    return '<div class="auth-wrap">' +
+      '<div class="auth-card">' +
+      '<div class="brand" style="justify-content:center;margin-bottom:18px"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 9v6M20 9v6M2 12h2M20 12h2M7 7v10M17 7v10M7 12h10"/></svg></div><span class="brand-name">FitCoach</span></div>' +
+      '<div class="auth-tabs"><button aria-pressed="'+(!isSignup)+'" data-auth-mode="login">Ingresar</button><button aria-pressed="'+isSignup+'" data-auth-mode="signup">Crear cuenta</button></div>' +
+      '<form id="auth-form">' +
+        roleFields +
+        '<div class="field"><label>Email</label><input type="email" name="email" required autocomplete="email"></div>' +
+        '<div class="field"><label>Contraseña</label><input type="password" name="password" required minlength="6" autocomplete="'+(isSignup?'new-password':'current-password')+'"></div>' +
+        (authError ? '<div class="callout" style="border-color:var(--warn);color:var(--warn)">'+esc(authError)+'</div>' : '') +
+        '<div class="form-actions" style="justify-content:center">' +
+          '<button class="btn" type="submit" '+(authBusy?'disabled':'')+'>'+(authBusy ? 'Un momento…' : (isSignup ? 'Crear cuenta' : 'Ingresar'))+'</button>' +
+        '</div>' +
+      '</form>' +
+      '</div></div>';
+  }
+
+  // ---------- renderers ----------
+  function renderTopbar(){
+    var label = me.role==='trainer' ? me.full_name.split(' ')[0]+' · Coach' : me.full_name.split(' ')[0];
+    return '<div class="topbar"><div class="topbar-inner">' +
+      '<div class="brand"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4 9v6M20 9v6M2 12h2M20 12h2M7 7v10M17 7v10M7 12h10"/></svg></div><span class="brand-name">FitCoach</span></div>' +
+      '<div class="switcher"><button aria-pressed="true">'+esc(label)+'</button><button data-logout>Salir</button></div>' +
+    '</div></div>';
+  }
+
+  function weekSelector(current, dataAttr){
+    return '<div class="week-selector">' + WEEK_LABELS.map(function(l, i){
+      return '<button aria-pressed="'+(current===i+1)+'" data-'+dataAttr+'="'+(i+1)+'">'+l+'</button>';
+    }).join('') + '</div>';
+  }
+
+  // One group of small set inputs per exercise, for the currently selected week only.
+  function setInputsCell(routine, day, ex, idx, weekIdx){
+    var row = ensureWeekSets(ex)[weekIdx];
+    var cols = row.map(function(v, ci){
+      var isDrop = ex.has_dropset && ci === ex.sets;
+      return '<div class="set-field' + (isDrop ? ' drop' : '') + '">' +
+        '<label>'+setColLabel(ex, ci)+'</label>' +
+        '<input class="wk-input" type="number" step="0.5" inputmode="decimal" placeholder="kg" value="'+esc(v)+'" ' +
+          'data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'" data-field="week_weights" data-week="'+weekIdx+'" data-set="'+ci+'">' +
+      '</div>';
+    }).join('');
+    return '<div class="set-fields">'+cols+'</div>';
+  }
+
+  // Trainer: sets/reps/rest + exercise list are editable, plus the per-set weight log for the active week.
+  function renderExerciseRowsTrainer(routine, day, weekIdx){
+    return day.exercises.map(function(ex, idx){
+      var def = exById[ex.exercise_id] || { name_es: ex.exercise_id, primary_muscle:'' };
+      return '<tr>' +
+        '<td>'+esc(def.name_es)+'<span class="muscle-pill">'+esc(def.primary_muscle)+'</span></td>' +
+        '<td><input type="number" min="1" max="8" value="'+ex.sets+'" data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'" data-field="sets"></td>' +
+        '<td><input type="text" value="'+esc(ex.reps)+'" data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'" data-field="reps"></td>' +
+        '<td><input type="number" min="0" step="5" value="'+ex.rest_seconds+'" data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'" data-field="rest_seconds"> s</td>' +
+        '<td style="text-align:center"><input type="checkbox" '+(ex.has_dropset?'checked':'')+' data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'" data-field="has_dropset" title="Tiene serie de descenso"></td>' +
+        '<td>'+setInputsCell(routine, day, ex, idx, weekIdx)+'</td>' +
+        '<td><button class="icon-btn" title="Quitar" data-remove-ex data-routine="'+routine.id+'" data-day="'+day.day_number+'" data-idx="'+idx+'">✕</button></td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function renderRoutineEditable(routine, clientId){
+    if (!routine) return '<div class="callout">Todavía no hay rutina para '+monthLabel(CURRENT_MONTH)+'.</div>' +
+      '<div class="form-actions"><button class="btn" data-create-routine="'+clientId+'">Crear rutina de este mes</button></div>';
+    var weekIdx = state.trainerWeek - 1;
+    var exOptions = DATA.exercises.map(function(e){ return '<option value="'+e.id+'">'+esc(e.name_es)+' — '+esc(e.primary_muscle)+'</option>'; }).join('');
+    var days = routine.days.map(function(day){
+      return '<div class="card day-card">' +
+        '<div class="head"><h3>Día '+day.day_number+' · '+esc(day.label)+'</h3><span class="day-badge">'+day.exercises.length+' ejercicios</span></div>' +
+        '<div class="table-scroll"><table class="ex-table"><thead><tr><th>Ejercicio</th><th>Series</th><th>Reps</th><th>Descanso</th><th>Desc.</th><th class="wk-head">Peso — '+WEEK_LABELS[weekIdx]+'</th><th></th></tr></thead>' +
+        '<tbody>'+renderExerciseRowsTrainer(routine, day, weekIdx)+'</tbody></table></div>' +
+        '<div class="add-ex-row"><select data-add-ex-select data-routine="'+routine.id+'" data-day="'+day.day_number+'"><option value="">+ Agregar ejercicio de la base de datos…</option>'+exOptions+'</select>' +
+        '<button class="btn sm ghost" data-add-ex-btn data-routine="'+routine.id+'" data-day="'+day.day_number+'">Agregar</button></div>' +
+      '</div>';
+    }).join('');
+    return '<div class="section-head" style="margin-bottom:14px"><div class="callout" style="margin:0;flex:1 1 260px"><b>Carga de peso:</b> cada serie tiene su propio campo; tildá "Desc." si el ejercicio suma una serie de descenso.</div>'+weekSelector(state.trainerWeek, 'trainer-week')+'</div>' +
+      days +
+      '<div class="card pad" style="margin-top:14px"><label>Día nuevo — etiqueta (ej: "Espalda y bíceps")</label>' +
+      '<div class="form-actions" style="justify-content:flex-start;gap:8px"><input type="text" id="new-day-label" placeholder="Nombre del día" style="flex:1 1 220px"><button class="btn sm ghost" data-add-day="'+routine.id+'">Agregar día</button></div></div>' +
+      '<div class="field" style="margin-top:14px"><label>Notas de cardio</label><textarea id="cardio-notes" data-routine="'+routine.id+'" rows="2">'+esc(routine.cardio_notes||'')+'</textarea></div>';
+  }
+
+  // Client: sets/reps/rest are fixed by the coach (read-only); only the active week's set inputs are editable.
+  function renderExerciseRowsClient(routine, day, weekIdx){
+    return day.exercises.map(function(ex, idx){
+      var def = exById[ex.exercise_id] || { name_es: ex.exercise_id, primary_muscle:'' };
+      return '<tr>' +
+        '<td>'+esc(def.name_es)+'<span class="muscle-pill">'+esc(def.primary_muscle)+'</span>'+(ex.has_dropset?'<span class="muscle-pill drop-pill">+ descenso</span>':'')+'</td>' +
+        '<td class="num plain">'+ex.sets+'</td>' +
+        '<td class="num plain">'+esc(ex.reps)+'</td>' +
+        '<td class="num plain">'+ex.rest_seconds+' s</td>' +
+        '<td>'+setInputsCell(routine, day, ex, idx, weekIdx)+'</td>' +
+      '</tr>';
+    }).join('');
+  }
+
+  function renderRoutineClient(routine){
+    if (!routine) return '<div class="callout">Tu entrenadora todavía no te asignó una rutina para '+monthLabel(CURRENT_MONTH)+'.</div>';
+    var weekIdx = state.clientWeek - 1;
+    var days = routine.days.map(function(day){
+      return '<div class="card day-card"><div class="head"><h3>Día '+day.day_number+' · '+esc(day.label)+'</h3><span class="day-badge">'+day.exercises.length+' ejercicios</span></div>' +
+        '<div class="table-scroll"><table class="ex-table"><thead><tr><th>Ejercicio</th><th>Series</th><th>Reps</th><th>Descanso</th><th class="wk-head">Peso — '+WEEK_LABELS[weekIdx]+'</th></tr></thead><tbody>'+renderExerciseRowsClient(routine, day, weekIdx)+'</tbody></table></div></div>';
+    }).join('');
+    return '<div class="section-head" style="margin-bottom:14px"><div class="callout" style="margin:0;flex:1 1 260px"><b>Cargá el peso de cada serie</b> en la semana en la que estás entrenando — se guarda solo, al salir del campo.</div>'+weekSelector(state.clientWeek, 'client-week')+'</div>' +
+      days + '<div class="callout"><b>Notas de cardio:</b> '+esc(routine.cardio_notes||'—')+'</div>';
+  }
+
+  function macroTotals(diet){
+    var t = { protein_g:0, carbs_g:0, fat_g:0, kcal:0 };
+    Object.keys(diet.meals).forEach(function(k){
+      var m = diet.meals[k].macros;
+      t.protein_g += (m.protein_g||0); t.carbs_g += (m.carbs_g||0); t.fat_g += (m.fat_g||0); t.kcal += (m.kcal||0);
+    });
+    return t;
+  }
+  function totalsBar(t){
+    var sum = t.protein_g + t.carbs_g + t.fat_g;
+    if (!sum) return '';
+    var p = (t.protein_g/sum*100), c = (t.carbs_g/sum*100), f = (t.fat_g/sum*100);
+    return '<div class="totals-bar"><span style="width:'+p+'%;background:var(--good)"></span><span style="width:'+c+'%;background:var(--accent)"></span><span style="width:'+f+'%;background:var(--warn)"></span></div>' +
+      '<div class="totals-legend"><span><i class="dot" style="background:var(--good)"></i>Proteína '+t.protein_g+'g</span><span><i class="dot" style="background:var(--accent)"></i>Carbs '+t.carbs_g+'g</span><span><i class="dot" style="background:var(--warn)"></i>Grasas '+t.fat_g+'g</span><span>· '+t.kcal+' kcal/día</span></div>';
+  }
+
+  function renderDietEditable(diet, clientId){
+    if (!diet) return '<div class="callout">Todavía no hay dieta para '+monthLabel(CURRENT_MONTH)+'.</div>' +
+      '<div class="form-actions"><button class="btn" data-create-diet="'+clientId+'">Crear dieta de este mes</button></div>';
+    var mealNames = Object.keys(diet.meals);
+    var meals = mealNames.map(function(name){
+      var meal = diet.meals[name];
+      return '<div class="card pad meal-card">' +
+        '<h3>'+esc(name)+'</h3>' +
+        '<textarea class="items-edit" data-diet="'+diet.id+'" data-meal="'+esc(name)+'" data-field="items">'+esc(meal.items.join(String.fromCharCode(10)))+'</textarea>' +
+        '<div class="macro-edit">' +
+          '<label>Prot (g)<input type="number" min="0" value="'+meal.macros.protein_g+'" data-diet="'+diet.id+'" data-meal="'+esc(name)+'" data-macro="protein_g"></label>' +
+          '<label>Carbs (g)<input type="number" min="0" value="'+meal.macros.carbs_g+'" data-diet="'+diet.id+'" data-meal="'+esc(name)+'" data-macro="carbs_g"></label>' +
+          '<label>Grasas (g)<input type="number" min="0" value="'+meal.macros.fat_g+'" data-diet="'+diet.id+'" data-meal="'+esc(name)+'" data-macro="fat_g"></label>' +
+          '<label>Kcal<input type="number" min="0" value="'+meal.macros.kcal+'" data-diet="'+diet.id+'" data-meal="'+esc(name)+'" data-macro="kcal"></label>' +
+        '</div></div>';
+    }).join('');
+    var t = macroTotals(diet);
+    return '<div class="meal-grid">'+meals+'</div>' +
+      '<div class="card pad" style="margin-top:14px"><label>Comida nueva</label>' +
+      '<div class="form-actions" style="justify-content:flex-start;gap:8px"><input type="text" id="new-meal-name" placeholder="Nombre (ej: Cena)" style="flex:1 1 220px"><button class="btn sm ghost" data-add-meal="'+diet.id+'">Agregar comida</button></div></div>' +
+      '<div class="card pad" style="margin-top:14px"><h3 style="margin:0 0 4px">Totales diarios estimados</h3>' + totalsBar(t) +
+      '<div class="stat-row" style="margin-top:14px"><div class="stat"><div class="v num"><input type="number" step="0.5" min="0" style="width:70px;text-align:center" value="'+esc(diet.daily_water_liters)+'" data-diet-water="'+diet.id+'"> L</div><div class="l">Agua / día</div></div></div></div>';
+  }
+
+  function renderDietReadonly(diet){
+    if (!diet) return '<div class="callout">Tu entrenadora todavía no te asignó una dieta para '+monthLabel(CURRENT_MONTH)+'.</div>';
+    var meals = Object.keys(diet.meals).map(function(name){
+      var meal = diet.meals[name];
+      var items = meal.items.map(function(it){ return '<li>'+esc(it)+'</li>'; }).join('');
+      return '<div class="card pad meal-card"><h3>'+esc(name)+'</h3><ul>'+items+'</ul>' +
+        '<div class="macro-row"><div class="stat"><div class="v num">'+meal.macros.protein_g+'g</div><div class="l">Prot</div></div>' +
+        '<div class="stat"><div class="v num">'+meal.macros.carbs_g+'g</div><div class="l">Carbs</div></div>' +
+        '<div class="stat"><div class="v num">'+meal.macros.fat_g+'g</div><div class="l">Grasas</div></div>' +
+        '<div class="stat"><div class="v num">'+meal.macros.kcal+'</div><div class="l">Kcal</div></div></div></div>';
+    }).join('');
+    var t = macroTotals(diet);
+    var supp = (diet.supplements||[]).map(function(s){ return '<li>'+esc(s.name)+' — '+esc(s.dose)+' ('+esc(s.timing)+')</li>'; }).join('');
+    return '<div class="meal-grid">'+meals+'</div>' +
+      '<div class="card pad" style="margin-top:14px"><h3 style="margin:0 0 4px">Totales diarios estimados</h3>'+totalsBar(t)+
+      '<div class="stat-row" style="margin-top:14px"><div class="stat"><div class="v num">'+esc(diet.daily_water_liters)+' L</div><div class="l">Agua / día</div></div></div>' +
+      (supp ? '<div style="margin-top:14px"><div class="eyebrow">Suplementos</div><ul style="margin:6px 0 0;padding-left:18px;font-size:13.5px">'+supp+'</ul></div>' : '') +
+      '</div>';
+  }
+
+  function progressHistoryTable(list){
+    var rows = list.map(function(p, i){
+      var prev = i>0 ? list[i-1] : null;
+      return '<tr><td>'+monthLabel(p.month)+'</td>' +
+        '<td class="num">'+fmt1(p.weight_kg)+' kg '+(prev?deltaSpan(p.weight_kg, prev.weight_kg, true):'')+'</td>' +
+        '<td class="num">'+p.measurements.waist_cm+' cm '+(prev?deltaSpan(p.measurements.waist_cm, prev.measurements.waist_cm, true):'')+'</td>' +
+        '<td class="num">'+p.measurements.abdomen_cm+' cm</td>' +
+        '<td class="num">'+p.measurements.chest_cm+' cm</td>' +
+        '<td class="num">'+p.measurements.thigh_cm+' cm</td></tr>';
+    }).join('');
+    return '<table class="history-table"><thead><tr><th>Mes</th><th>Peso</th><th>Cintura</th><th>Abdomen</th><th>Pecho</th><th>Muslo</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  }
+
+  function renderProgress(clientId, opts){
+    opts = opts || {};
+    var list = progressFor(clientId);
+    if (!list.length) return '<div class="callout">Todavía no hay registros de progreso.</div>' + (opts.withForm ? renderProgressForm(clientId) : '');
+    var chartPts = list.map(function(p){ return { value: p.weight_kg, label: monthLabel(p.month) }; });
+    var last = list[list.length-1];
+    var first = list[0];
+    var html = '<div class="card pad">' +
+      '<div class="section-head"><h3 style="margin:0">Evolución de peso</h3><span class="subtitle">'+monthLabel(first.month)+' → '+monthLabel(last.month)+'</span></div>' +
+      lineChart(chartPts, { unit:' kg', title:'Peso a lo largo del tiempo' }) +
+      '</div>' +
+      '<div class="card pad" style="margin-top:14px">' +
+      '<h3 style="margin:0 0 4px">Historial de medidas</h3>' + progressHistoryTable(list) +
+      '</div>';
+    if (opts.withForm){
+      html += renderProgressForm(clientId);
+    }
+    return html;
+  }
+
+  function renderProgressForm(clientId){
+    var defMonth = CURRENT_MONTH;
+    return '<div class="card pad" style="margin-top:14px">' +
+      '<h3 style="margin:0">Cargar progreso mensual</h3>' +
+      '<p class="hint" style="margin:4px 0 0">Las fotos se guardan en tu cuenta de forma privada; solo vos y tu entrenadora pueden verlas.</p>' +
+      '<form id="progress-form" data-client="'+clientId+'">' +
+      '<div class="form-grid">' +
+        '<div class="field"><label>Mes</label><input type="month" name="month" value="'+defMonth+'" required></div>' +
+        '<div class="field"><label>Peso (kg)</label><input type="number" step="0.1" name="weight_kg" required></div>' +
+        '<div class="field"><label>Altura (cm)</label><input type="number" name="height_cm" value="'+(me.height_cm||'')+'" required></div>' +
+        '<div class="field"><label>Pecho (cm)</label><input type="number" step="0.5" name="chest_cm" required></div>' +
+        '<div class="field"><label>Cintura (cm)</label><input type="number" step="0.5" name="waist_cm" required></div>' +
+        '<div class="field"><label>Abdomen (cm)</label><input type="number" step="0.5" name="abdomen_cm" required></div>' +
+        '<div class="field"><label>Muslo (cm)</label><input type="number" step="0.5" name="thigh_cm" required></div>' +
+        '<div class="field"><label>Foto frente</label><input type="file" name="front" accept="image/*"></div>' +
+        '<div class="field"><label>Foto perfil</label><input type="file" name="side" accept="image/*"></div>' +
+        '<div class="field"><label>Foto espalda</label><input type="file" name="back" accept="image/*"></div>' +
+      '</div>' +
+      '<div class="form-actions"><button class="btn" type="submit" id="progress-submit-btn">Guardar progreso</button><span class="hint">Se agrega a tu historial al instante.</span></div>' +
+      '</form></div>';
+  }
+
+  function renderTrainerView(){
+    if (!state.trainerClientId && clients.length) state.trainerClientId = clients[0].id;
+    var cards = clients.map(function(c){
+      var hist = progressFor(c.id);
+      var last = hist[hist.length-1], prev = hist.length>1 ? hist[hist.length-2] : null;
+      return '<div class="card pad client-card" data-select-client="'+c.id+'" data-active="'+(state.trainerClientId===c.id)+'">' +
+        '<h3>'+esc(c.full_name)+'</h3><div class="goal">'+esc(c.goal||'')+'</div>' +
+        (last ? '<div class="stat-row">' +
+          '<div class="stat"><div class="v num">'+fmt1(last.weight_kg)+' kg'+(prev?deltaSpan(last.weight_kg, prev.weight_kg, true):'')+'</div><div class="l">Peso actual</div></div>' +
+          '<div class="stat"><div class="v num">'+last.measurements.waist_cm+' cm'+(prev?deltaSpan(last.measurements.waist_cm, prev.measurements.waist_cm, true):'')+'</div><div class="l">Cintura</div></div>' +
+          '</div>' : '<div class="hint">Sin registros todavía</div>') +
+      '</div>';
+    }).join('');
+
+    if (!clients.length){
+      return '<div class="section-head"><div><h2>Hola, '+esc(me.full_name.split(' ')[0])+'</h2><div class="subtitle">'+esc(me.specialty||'')+'</div></div></div>' +
+        '<div class="callout"><b>Todavía no tenés alumnos registrados.</b> Compartí el link de esta app — al crear su cuenta como "Alumno/a" van a aparecer acá automáticamente.</div>';
+    }
+
+    var activeClient = clients.find(function(c){ return c.id===state.trainerClientId; }) || clients[0];
+    var routine = routineFor(activeClient.id);
+    var diet = dietFor(activeClient.id);
+    var tabContent = state.trainerTab==='rutina' ? renderRoutineEditable(routine, activeClient.id)
+      : state.trainerTab==='dieta' ? renderDietEditable(diet, activeClient.id)
+      : renderProgress(activeClient.id);
+
+    return '<div class="section-head"><div><h2>Hola, '+esc(me.full_name.split(' ')[0])+'</h2><div class="subtitle">'+esc(me.specialty||'')+' · '+clients.length+' alumnos activos</div></div></div>' +
+      '<div class="grid-clients">'+cards+'</div>' +
+      '<div class="tabs" role="tablist">' +
+        '<button aria-pressed="'+(state.trainerTab==='rutina')+'" data-trainer-tab="rutina">Rutina de '+esc(activeClient.full_name.split(' ')[0])+'</button>' +
+        '<button aria-pressed="'+(state.trainerTab==='dieta')+'" data-trainer-tab="dieta">Dieta</button>' +
+        '<button aria-pressed="'+(state.trainerTab==='progreso')+'" data-trainer-tab="progreso">Progreso</button>' +
+      '</div>' +
+      tabContent;
+  }
+
+  function renderClientView(){
+    var routine = routineFor(me.id);
+    var diet = dietFor(me.id);
+    var tabContent = state.clientTab==='rutina' ? renderRoutineClient(routine)
+      : state.clientTab==='dieta' ? renderDietReadonly(diet)
+      : renderProgress(me.id, { withForm:true });
+
+    return '<div class="section-head"><div><h2>Hola, '+esc(me.full_name.split(' ')[0])+'</h2><div class="subtitle">'+esc(me.goal||'')+(trainerOf?' · Entrenadora: '+esc(trainerOf.full_name):'')+'</div></div></div>' +
+      '<div class="tabs" role="tablist">' +
+        '<button aria-pressed="'+(state.clientTab==='rutina')+'" data-client-tab="rutina">Mi rutina</button>' +
+        '<button aria-pressed="'+(state.clientTab==='dieta')+'" data-client-tab="dieta">Mi dieta</button>' +
+        '<button aria-pressed="'+(state.clientTab==='progreso')+'" data-client-tab="progreso">Mi progreso</button>' +
+      '</div>' +
+      tabContent;
+  }
+
+  function render(){
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.setAttribute('data-palette', state.palette);
+    var app = document.getElementById('app');
+    if (loading){
+      app.innerHTML = '<div class="auth-wrap"><div class="hint">Cargando…</div></div>';
+      return;
+    }
+    if (!me){
+      app.innerHTML = renderAuth();
+      bind();
+      return;
+    }
+    var body = me.role==='trainer' ? renderTrainerView() : renderClientView();
+    app.innerHTML = renderTopbar() + '<div style="padding-bottom:40px">' + body + '</div>';
+    bind();
+  }
+
+  // ---------- data loading ----------
+  function mapRoutineRow(row, days){
+    return {
+      id: row.id,
+      client_id: row.client_id,
+      month: row.month,
+      cardio_notes: row.cardio_notes,
+      days: days.map(function(d){
+        return {
+          id: d.id,
+          day_number: d.day_number,
+          label: d.label,
+          exercises: (d._exercises||[]).map(function(re){
+            return {
+              row_id: re.id,
+              exercise_id: re.exercise_id,
+              sets: re.sets,
+              reps: re.reps,
+              rest_seconds: re.rest_seconds,
+              has_dropset: re.has_dropset,
+              week_weights: re.week_weights
+            };
+          })
+        };
+      })
+    };
+  }
+
+  function mapDietRow(row, meals){
+    var mealsObj = {};
+    meals.forEach(function(m){
+      mealsObj[m.meal_name] = {
+        row_id: m.id,
+        items: m.items || [],
+        macros: { protein_g: m.protein_g||0, carbs_g: m.carbs_g||0, fat_g: m.fat_g||0, kcal: m.kcal||0 }
+      };
+    });
+    return {
+      id: row.id,
+      client_id: row.client_id,
+      month: row.month,
+      daily_water_liters: row.daily_water_liters,
+      supplements: row.supplements || [],
+      meals: mealsObj
+    };
+  }
+
+  function mapProgressRow(row){
+    return {
+      id: row.id,
+      client_id: row.client_id,
+      month: row.month,
+      weight_kg: row.weight_kg,
+      height_cm: row.height_cm,
+      measurements: { chest_cm: row.chest_cm, waist_cm: row.waist_cm, abdomen_cm: row.abdomen_cm, thigh_cm: row.thigh_cm },
+      photo_urls: row.photo_urls || {}
+    };
+  }
+
+  function loadRoutineForClient(clientId){
+    return sb.from('routines').select('*').eq('client_id', clientId).eq('month', CURRENT_MONTH).maybeSingle()
+      .then(function(res){
+        if (res.error || !res.data) return null;
+        var routineRow = res.data;
+        return sb.from('routine_days').select('*').eq('routine_id', routineRow.id).order('day_number')
+          .then(function(daysRes){
+            var days = daysRes.data || [];
+            if (!days.length) return mapRoutineRow(routineRow, []);
+            var dayIds = days.map(function(d){ return d.id; });
+            return sb.from('routine_exercises').select('*').in('routine_day_id', dayIds).order('position')
+              .then(function(exRes){
+                var byDay = {};
+                (exRes.data||[]).forEach(function(re){
+                  (byDay[re.routine_day_id] = byDay[re.routine_day_id]||[]).push(re);
+                });
+                days.forEach(function(d){ d._exercises = byDay[d.id] || []; });
+                return mapRoutineRow(routineRow, days);
+              });
+          });
+      });
+  }
+
+  function loadDietForClient(clientId){
+    return sb.from('diets').select('*').eq('client_id', clientId).eq('month', CURRENT_MONTH).maybeSingle()
+      .then(function(res){
+        if (res.error || !res.data) return null;
+        var dietRow = res.data;
+        return sb.from('diet_meals').select('*').eq('diet_id', dietRow.id).order('position')
+          .then(function(mealsRes){
+            return mapDietRow(dietRow, mealsRes.data || []);
+          });
+      });
+  }
+
+  function loadProgressForClient(clientId){
+    return sb.from('progress').select('*').eq('client_id', clientId).order('month')
+      .then(function(res){ return (res.data||[]).map(mapProgressRow); });
+  }
+
+  function loadClientBundle(clientId){
+    return Promise.all([loadRoutineForClient(clientId), loadDietForClient(clientId), loadProgressForClient(clientId)])
+      .then(function(r){
+        if (r[0]) routines = routines.filter(function(x){ return x.client_id!==clientId; }).concat([r[0]]);
+        else routines = routines.filter(function(x){ return x.client_id!==clientId; });
+        if (r[1]) diets = diets.filter(function(x){ return x.client_id!==clientId; }).concat([r[1]]);
+        else diets = diets.filter(function(x){ return x.client_id!==clientId; });
+        progress = progress.filter(function(x){ return x.client_id!==clientId; }).concat(r[2]);
+      });
+  }
+
+  function loadEverythingAndRender(){
+    loading = true; render();
+    sb.auth.getSession().then(function(res){
+      session = res.data.session;
+      if (!session){ loading=false; me=null; render(); return; }
+      return sb.from('profiles').select('*').eq('id', session.user.id).maybeSingle().then(function(pres){
+        if (!pres.data){ loading=false; me=null; render(); return; }
+        me = pres.data;
+        profileById[me.id] = me;
+        if (me.role==='trainer'){
+          return sb.from('profiles').select('*').eq('trainer_id', me.id).order('full_name').then(function(cres){
+            clients = cres.data || [];
+            clients.forEach(function(c){ profileById[c.id] = c; });
+            return Promise.all(clients.map(function(c){ return loadClientBundle(c.id); }));
+          }).then(function(){ loading=false; render(); });
+        } else {
+          var p = me.trainer_id ? sb.from('profiles').select('*').eq('id', me.trainer_id).maybeSingle().then(function(tres){ trainerOf = tres.data || null; }) : Promise.resolve();
+          return p.then(function(){ return loadClientBundle(me.id); }).then(function(){ loading=false; render(); });
+        }
+      });
+    });
+  }
+
+  // ---------- mutations ----------
+  function persistRoutineExercise(ex){
+    sb.from('routine_exercises').update({
+      sets: ex.sets, reps: ex.reps, rest_seconds: ex.rest_seconds, has_dropset: ex.has_dropset, week_weights: ex.week_weights
+    }).eq('id', ex.row_id).then(function(res){
+      if (res.error) toast('No se pudo guardar: '+res.error.message);
+    });
+  }
+
+  function bind(){
+    var app = document.getElementById('app');
+
+    // ---- auth ----
+    app.querySelectorAll('[data-auth-mode]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        authMode = btn.getAttribute('data-auth-mode');
+        authError = '';
+        render();
+      });
+    });
+    var authForm = document.getElementById('auth-form');
+    if (authForm){
+      authForm.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        if (authBusy) return;
+        var fd = new FormData(authForm);
+        var email = fd.get('email'), password = fd.get('password');
+        authBusy = true; authError=''; render();
+        if (authMode === 'signup'){
+          var role = fd.get('role');
+          var fullName = fd.get('full_name');
+          sb.auth.signUp({ email: email, password: password }).then(function(res){
+            if (res.error){ authBusy=false; authError=res.error.message; render(); return; }
+            if (!res.data.session){
+              authBusy=false;
+              authError = '';
+              loading = false; me = null;
+              toast('Revisá tu email para confirmar la cuenta y después iniciá sesión.');
+              authMode = 'login';
+              render();
+              return;
+            }
+            var newId = res.data.user.id;
+            var profileRow = { id: newId, role: role, full_name: fullName };
+            var afterTrainer = function(trainerId){
+              if (trainerId) profileRow.trainer_id = trainerId;
+              sb.from('profiles').insert(profileRow).then(function(ires){
+                authBusy = false;
+                if (ires.error){ authError = ires.error.message; render(); return; }
+                loadEverythingAndRender();
+              });
+            };
+            if (role === 'client'){
+              sb.from('profiles').select('id').eq('role','trainer').limit(1).maybeSingle().then(function(tres){
+                afterTrainer(tres.data ? tres.data.id : null);
+              });
+            } else {
+              afterTrainer(null);
+            }
+          });
+        } else {
+          sb.auth.signInWithPassword({ email: email, password: password }).then(function(res){
+            authBusy = false;
+            if (res.error){ authError = res.error.message; render(); return; }
+            loadEverythingAndRender();
+          });
+        }
+      });
+    }
+
+    app.querySelectorAll('[data-logout]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        sb.auth.signOut().then(function(){
+          me = null; trainerOf = null; clients = []; routines = []; diets = []; progress = [];
+          render();
+        });
+      });
+    });
+
+    app.querySelectorAll('[data-select-client]').forEach(function(el){
+      el.addEventListener('click', function(){
+        state.trainerClientId = el.getAttribute('data-select-client');
+        render();
+      });
+    });
+
+    app.querySelectorAll('[data-trainer-tab]').forEach(function(btn){
+      btn.addEventListener('click', function(){ state.trainerTab = btn.getAttribute('data-trainer-tab'); render(); });
+    });
+    app.querySelectorAll('[data-client-tab]').forEach(function(btn){
+      btn.addEventListener('click', function(){ state.clientTab = btn.getAttribute('data-client-tab'); render(); });
+    });
+    app.querySelectorAll('[data-trainer-week]').forEach(function(btn){
+      btn.addEventListener('click', function(){ state.trainerWeek = parseInt(btn.getAttribute('data-trainer-week'),10); render(); });
+    });
+    app.querySelectorAll('[data-client-week]').forEach(function(btn){
+      btn.addEventListener('click', function(){ state.clientWeek = parseInt(btn.getAttribute('data-client-week'),10); render(); });
+    });
+
+    // ---- create routine / diet for current month ----
+    app.querySelectorAll('[data-create-routine]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var clientId = btn.getAttribute('data-create-routine');
+        sb.from('routines').insert({ client_id: clientId, month: CURRENT_MONTH, cardio_notes: '' }).select().single().then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Rutina creada');
+          loadClientBundle(clientId).then(render);
+        });
+      });
+    });
+    app.querySelectorAll('[data-create-diet]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var clientId = btn.getAttribute('data-create-diet');
+        sb.from('diets').insert({ client_id: clientId, month: CURRENT_MONTH, daily_water_liters: 2, supplements: [] }).select().single().then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Dieta creada');
+          loadClientBundle(clientId).then(render);
+        });
+      });
+    });
+    app.querySelectorAll('[data-add-day]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var routineId = btn.getAttribute('data-add-day');
+        var r = routines.find(function(x){ return x.id===routineId; });
+        var input = document.getElementById('new-day-label');
+        var label = (input.value||'').trim() || 'Entreno';
+        var dayNumber = r.days.length + 1;
+        sb.from('routine_days').insert({ routine_id: routineId, day_number: dayNumber, label: label }).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Día agregado');
+          loadClientBundle(r.client_id).then(render);
+        });
+      });
+    });
+    app.querySelectorAll('[data-add-meal]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var dietId = btn.getAttribute('data-add-meal');
+        var d = diets.find(function(x){ return x.id===dietId; });
+        var input = document.getElementById('new-meal-name');
+        var name = (input.value||'').trim();
+        if (!name){ toast('Poné un nombre para la comida'); return; }
+        if (d.meals[name]){ toast('Ya existe una comida con ese nombre'); return; }
+        sb.from('diet_meals').insert({ diet_id: dietId, meal_name: name, position: Object.keys(d.meals).length, items: [], protein_g:0, carbs_g:0, fat_g:0, kcal:0 }).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Comida agregada');
+          loadClientBundle(d.client_id).then(render);
+        });
+      });
+    });
+
+    var cardioTa = document.getElementById('cardio-notes');
+    if (cardioTa){
+      cardioTa.addEventListener('change', function(){
+        sb.from('routines').update({ cardio_notes: cardioTa.value }).eq('id', cardioTa.getAttribute('data-routine')).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Notas guardadas');
+        });
+      });
+    }
+    app.querySelectorAll('[data-diet-water]').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        sb.from('diets').update({ daily_water_liters: parseFloat(inp.value)||0 }).eq('id', inp.getAttribute('data-diet-water')).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Dieta guardada');
+        });
+      });
+    });
+
+    // routine edits (sets / reps / rest / dropset toggle / per-set weight) — shared by trainer and client tables
+    app.querySelectorAll('.ex-table input[type="checkbox"]').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        var r = routines.find(function(x){ return x.id===cb.getAttribute('data-routine'); });
+        var day = r.days.find(function(d){ return d.day_number==cb.getAttribute('data-day'); });
+        var ex = day.exercises[parseInt(cb.getAttribute('data-idx'),10)];
+        ex.has_dropset = cb.checked;
+        ensureWeekSets(ex);
+        persistRoutineExercise(ex);
+        toast(ex.has_dropset ? 'Serie de descenso agregada' : 'Serie de descenso quitada');
+        render();
+      });
+    });
+    app.querySelectorAll('.ex-table input:not([type="checkbox"])').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        var r = routines.find(function(x){ return x.id===inp.getAttribute('data-routine'); });
+        var day = r.days.find(function(d){ return d.day_number==inp.getAttribute('data-day'); });
+        var idx = parseInt(inp.getAttribute('data-idx'),10);
+        var ex = day.exercises[idx];
+        var field = inp.getAttribute('data-field');
+        if (field === 'week_weights'){
+          var wi = parseInt(inp.getAttribute('data-week'),10);
+          var si = parseInt(inp.getAttribute('data-set'),10);
+          ensureWeekSets(ex)[wi][si] = inp.value.trim();
+          persistRoutineExercise(ex);
+          toast('Peso registrado');
+        } else if (field === 'sets'){
+          ex.sets = Math.max(1, parseInt(inp.value,10) || 1);
+          ensureWeekSets(ex);
+          persistRoutineExercise(ex);
+          toast('Rutina guardada');
+          render();
+        } else {
+          ex[field] = field==='reps' ? inp.value : (parseInt(inp.value,10) || 0);
+          persistRoutineExercise(ex);
+          toast('Rutina guardada');
+        }
+      });
+    });
+    app.querySelectorAll('[data-remove-ex]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var r = routines.find(function(x){ return x.id===btn.getAttribute('data-routine'); });
+        var day = r.days.find(function(d){ return d.day_number==btn.getAttribute('data-day'); });
+        var idx = parseInt(btn.getAttribute('data-idx'),10);
+        var ex = day.exercises[idx];
+        sb.from('routine_exercises').delete().eq('id', ex.row_id).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          day.exercises.splice(idx, 1);
+          toast('Ejercicio eliminado');
+          render();
+        });
+      });
+    });
+    app.querySelectorAll('[data-add-ex-btn]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var sel = app.querySelector('[data-add-ex-select][data-routine="'+btn.getAttribute('data-routine')+'"][data-day="'+btn.getAttribute('data-day')+'"]');
+        if (!sel.value) return;
+        var r = routines.find(function(x){ return x.id===btn.getAttribute('data-routine'); });
+        var day = r.days.find(function(d){ return d.day_number==btn.getAttribute('data-day'); });
+        var newEx = { exercise_id: sel.value, sets: 3, reps: '10-12', rest_seconds: 60, has_dropset: false, week_weights: [] };
+        ensureWeekSets(newEx);
+        sb.from('routine_exercises').insert({
+          routine_day_id: day.id, exercise_id: newEx.exercise_id, position: day.exercises.length,
+          sets: newEx.sets, reps: newEx.reps, rest_seconds: newEx.rest_seconds, has_dropset: newEx.has_dropset, week_weights: newEx.week_weights
+        }).select().single().then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          newEx.row_id = res.data.id;
+          day.exercises.push(newEx);
+          toast('Ejercicio agregado');
+          render();
+        });
+      });
+    });
+
+    // diet edits
+    app.querySelectorAll('.items-edit').forEach(function(ta){
+      ta.addEventListener('change', function(){
+        var d = diets.find(function(x){ return x.id===ta.getAttribute('data-diet'); });
+        var meal = d.meals[ta.getAttribute('data-meal')];
+        meal.items = ta.value.split(String.fromCharCode(10)).map(function(s){return s.trim();}).filter(Boolean);
+        sb.from('diet_meals').update({ items: meal.items }).eq('id', meal.row_id).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Dieta guardada');
+        });
+      });
+    });
+    app.querySelectorAll('.macro-edit input').forEach(function(inp){
+      inp.addEventListener('change', function(){
+        var d = diets.find(function(x){ return x.id===inp.getAttribute('data-diet'); });
+        var meal = d.meals[inp.getAttribute('data-meal')];
+        var macro = inp.getAttribute('data-macro');
+        meal.macros[macro] = parseInt(inp.value,10) || 0;
+        var patch = {}; patch[macro] = meal.macros[macro];
+        sb.from('diet_meals').update(patch).eq('id', meal.row_id).then(function(res){
+          if (res.error){ toast('Error: '+res.error.message); return; }
+          toast('Dieta guardada');
+          render();
+        });
+      });
+    });
+
+    // progress form
+    var pf = document.getElementById('progress-form');
+    if (pf){
+      pf.addEventListener('submit', function(ev){
+        ev.preventDefault();
+        var fd = new FormData(pf);
+        var clientId = pf.getAttribute('data-client');
+        var month = fd.get('month');
+        if (progress.some(function(p){ return p.client_id===clientId && p.month===month; })){
+          toast('Ya existe un registro para ese mes');
+          return;
+        }
+        var submitBtn = document.getElementById('progress-submit-btn');
+        submitBtn.disabled = true;
+        var entry = {
+          client_id: clientId,
+          month: month,
+          weight_kg: parseFloat(fd.get('weight_kg')),
+          height_cm: parseFloat(fd.get('height_cm')),
+          chest_cm: parseFloat(fd.get('chest_cm')),
+          waist_cm: parseFloat(fd.get('waist_cm')),
+          abdomen_cm: parseFloat(fd.get('abdomen_cm')),
+          thigh_cm: parseFloat(fd.get('thigh_cm'))
+        };
+        var photoFields = ['front','side','back'];
+        var uploads = photoFields.map(function(key){
+          var file = fd.get(key);
+          if (!file || !file.size) return Promise.resolve([key, null]);
+          var path = clientId + '/' + month + '_' + key + '_' + Date.now() + '.' + (file.name.split('.').pop()||'jpg');
+          return sb.storage.from('progress-photos').upload(path, file).then(function(res){
+            if (res.error) return [key, null];
+            return [key, path];
+          });
+        });
+        Promise.all(uploads).then(function(pairs){
+          var photo_urls = {};
+          pairs.forEach(function(p){ if (p[1]) photo_urls[p[0]] = p[1]; });
+          entry.photo_urls = photo_urls;
+          return sb.from('progress').insert(entry);
+        }).then(function(res){
+          submitBtn.disabled = false;
+          if (res && res.error){ toast('Error: '+res.error.message); return; }
+          toast('Progreso registrado');
+          loadClientBundle(clientId).then(render);
+        });
+      });
+    }
+  }
+
+  loadEverythingAndRender();
+})();
+</script>
